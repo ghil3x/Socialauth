@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block head_title %}Logged in User Informations{% endblock %}
+
+{% block content %}
+  <h1>Login social</h1>
+  <div>
+    {% if user.is_authenticated %}
+      <h3>Bienvenue {{ user.username }}</h3>
+        <div>
+          ID : {{ user.id }} <br />
+          USERNAME : {{ user.username }} <br />
+          EMAIL : {{ user.email }} <br />
+        </div>
+      <a href="/logout/">Log out</a>
+
+    {% else %}
+      <p>
+        Anonyme
+      </p>
+    {% endif %}
+    <h1>Welcome, {{ user.username }}</h1>
+    <p>Following is the Extra information that twitter has provided to allauth:</p>
+    {% for account in user.socialaccount_set.all %}
+        <h2 style="text-transform:capitalize;">{{ account.provider }} account data</h2>
+        <!-- <p>Avatar: <img width="50" height="50" src="{{ account.get_avatar_url }}" /></p> -->
+        <p>Avatar: <img width="50" height="50" src="{{ account.extra_data.profile_image_url }}" /></p>
+        <p>UID: {{ account.uid }}</p>
+        <p>Username: <a href="https://twitter.com/{{ account.extra_data.screen_name }}">{{ account.extra_data.screen_name }}</a></p>
+        <p>Nom et Prénom: {{ account.extra_data.name }}</p>
+        <p>Desciption: {{ account.extra_data.description }}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    RAMDANI Aghiles -- Developer -- @ghil3x
+    
+
+# TECHNOLOGY COLOPHON
+
+    Django
+    HTML5 Boilerplate
+    Twitter Bootstrap
+
